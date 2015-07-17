@@ -14,7 +14,24 @@
         Adjective:
     <input type= "text" name="adjective"> 
     <br>
-    <input type="submit" value="submit">        
+        Verb:
+    <select name="verb">
+        <option value="swimming"> swimming</option>
+        <option value="dancing"> dancing</option>
+        <option value="running"> running</option>
+    </select>
+    <br>
+        Body part:
+    <input type= "checkbox" name="bodypart[]" value="leg" /> Leg
+    <input type= "checkbox" name="bodypart[]" value="eye" /> Eye
+    <input type= "checkbox" name="bodypart[]" value="arm" /> Arm
+    <br>
+    <input type="submit" value="submit"> 
+
     </form>
-    There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way.
+    There once was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ person }} went to pick it up, it burst into flames in a totally {{ adjective }} way. The other person {{verb}} in the lab was so scared that she almost lost a 
+
+    {% for bodypart in bodyparts %}
+    {{bodypart}}
+    {%endfor%}
 </body>    
