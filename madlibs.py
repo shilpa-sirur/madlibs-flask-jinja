@@ -17,17 +17,15 @@ def start_here():
 def say_hello():
     return render_template("hello.html")
 
-@app.route('/greet')
+@app.route('/greet', methods=["POST"])
 def greet_person():
-    player = request.args.get("person")
+    player = request.form.get("person")
 
     AWESOMENESS = [
         'awesome', 'terrific', 'fantastic', 'neato', 'fantabulous', 'wowza', 'oh-so-not-meh',
         'brilliant', 'ducky', 'coolio', 'incredible', 'wonderful', 'smashing', 'lovely']
 
     compliment = choice(AWESOMENESS)
-
-    print render_template("compliment.html", person=player, compliment=compliment)
 
     return render_template("compliment.html", person=player, compliment=compliment)
 
@@ -40,13 +38,13 @@ def show_game_form():
     else:
         return render_template("game.html") 
 
-@app.route('/madlib')
+@app.route('/madlib', methods=["POST"])
 def show_madlib():
 
-    peep = request.args.get("person")
-    colors = request.args.get("color")
-    nouns = request.args.get("noun")
-    adjectives = request.args.get("adjective")
+    peep = request.form.get("person")
+    colors = request.form.get("color")
+    nouns = request.form.get("noun")
+    adjectives = request.form.get("adjective")
 
     return render_template("game.html", person=peep, color=colors, noun=nouns, adjective=adjectives)
 
